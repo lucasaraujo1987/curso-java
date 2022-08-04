@@ -100,6 +100,11 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JSpinner" name="txtA">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Padr&#xe3;o"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="txtAStateChanged"/>
       </Events>

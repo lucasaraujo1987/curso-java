@@ -48,6 +48,7 @@ public class TelaEquacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtA.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 txtAStateChanged(evt);
