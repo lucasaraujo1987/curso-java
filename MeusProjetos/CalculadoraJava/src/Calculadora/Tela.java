@@ -58,7 +58,7 @@ public class Tela extends javax.swing.JFrame {
         btnPonto = new javax.swing.JButton();
         btnIgual = new javax.swing.JButton();
         btnSomar = new javax.swing.JButton();
-        btnParenteses2 = new javax.swing.JButton();
+        btnCubo = new javax.swing.JButton();
         btn00 = new javax.swing.JButton();
         txtConta = new javax.swing.JTextField();
         lblData = new javax.swing.JLabel();
@@ -318,14 +318,14 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        btnParenteses2.setBackground(new java.awt.Color(0, 0, 0));
-        btnParenteses2.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        btnParenteses2.setForeground(new java.awt.Color(255, 255, 255));
-        btnParenteses2.setText("<html>x<sup>3</sup></html>");
-        btnParenteses2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 0));
-        btnParenteses2.addActionListener(new java.awt.event.ActionListener() {
+        btnCubo.setBackground(new java.awt.Color(0, 0, 0));
+        btnCubo.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        btnCubo.setForeground(new java.awt.Color(255, 255, 255));
+        btnCubo.setText("<html>x<sup>3</sup></html>");
+        btnCubo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 0));
+        btnCubo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnParenteses2ActionPerformed(evt);
+                btnCuboActionPerformed(evt);
             }
         });
 
@@ -379,7 +379,7 @@ public class Tela extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnQuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnParenteses2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnZerarValor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -446,7 +446,7 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(btnRaizQ, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnQuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnZerarValor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnParenteses2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,7 +510,7 @@ public class Tela extends javax.swing.JFrame {
         quadrado = Double.parseDouble(txtresultado.getText());
         resultado = Math.pow(quadrado, 2);
         txtresultado.setText(String.valueOf(resultado));
-        txtConta.setText(String.format(quadrado + " x²"));
+        txtConta.setText(String.format(quadrado + " ²"));
     }//GEN-LAST:event_btnQuadradoActionPerformed
 
     private void btnPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentagemActionPerformed
@@ -661,12 +661,12 @@ public class Tela extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSomarActionPerformed
 
-    private void btnParenteses2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParenteses2ActionPerformed
+    private void btnCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuboActionPerformed
         cubo = Double.parseDouble(txtresultado.getText());
         resultado = Math.pow(cubo, 3);
         txtresultado.setText(String.valueOf(resultado));
-        txtConta.setText(String.format(cubo + " x³"));
-    }//GEN-LAST:event_btnParenteses2ActionPerformed
+        txtConta.setText(String.format(cubo + " ³"));
+    }//GEN-LAST:event_btnCuboActionPerformed
 
     private void btn00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn00ActionPerformed
         txtresultado.setText(txtresultado.getText() + "00");
@@ -732,11 +732,11 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JButton btn7;
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
+    private javax.swing.JButton btnCubo;
     private javax.swing.JButton btnDiminuir;
     private javax.swing.JButton btnDividir;
     private javax.swing.JButton btnIgual;
     private javax.swing.JButton btnMultiplicar;
-    private javax.swing.JButton btnParenteses2;
     private javax.swing.JButton btnPonto;
     private javax.swing.JButton btnPorcentagem;
     private javax.swing.JButton btnQuadrado;
