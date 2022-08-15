@@ -5,19 +5,13 @@
 package Calculadora;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.Scanner;
+
 
 /**
  *
  * @author lukas
  */
-public class Tela extends javax.swing.JFrame {
-
-    Scanner teclado = new Scanner(System.in);
-    Date hora = new Date();
-    
+public class Tela extends javax.swing.JFrame {    
     
     double resultado, num1, num2, num3, raiz, porcento, calculo, quadrado, cubo,
             dividir;
@@ -68,8 +62,6 @@ public class Tela extends javax.swing.JFrame {
         btn00 = new javax.swing.JButton();
         txtConta = new javax.swing.JTextField();
         lblData = new javax.swing.JLabel();
-        lblHorario = new javax.swing.JLabel();
-        lblMinuto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -367,32 +359,6 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        lblHorario.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblHorario.setForeground(new java.awt.Color(255, 255, 255));
-        lblHorario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        lblHorario.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                lblHorarioAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
-        lblMinuto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblMinuto.setForeground(new java.awt.Color(255, 255, 255));
-        lblMinuto.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lblMinuto.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                lblMinutoAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -400,11 +366,7 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(lblData)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblHorario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMinuto)
-                .addGap(92, 92, 92))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -473,10 +435,7 @@ public class Tela extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMinuto, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(txtConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -726,18 +685,6 @@ public class Tela extends javax.swing.JFrame {
         lblData.setText(dia+" / "+mes+" / "+ano);
     }//GEN-LAST:event_lblDataAncestorAdded
 
-    private void lblHorarioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblHorarioAncestorAdded
-        LocalTime hora = LocalTime.now();
-        int horario = hora.getHour();
-        lblHorario.setText(horario+" :");
-    }//GEN-LAST:event_lblHorarioAncestorAdded
-
-    private void lblMinutoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblMinutoAncestorAdded
-        LocalTime hora = LocalTime.now();
-        int minuto = hora.getMinute();
-        lblMinuto.setText(Integer.toString(minuto));
-    }//GEN-LAST:event_lblMinutoAncestorAdded
-
     /**
      * @param args the command line arguments
      */
@@ -799,8 +746,6 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JButton btnZerarValor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblHorario;
-    private javax.swing.JLabel lblMinuto;
     private javax.swing.JTextField txtConta;
     private javax.swing.JTextField txtresultado;
     // End of variables declaration//GEN-END:variables
