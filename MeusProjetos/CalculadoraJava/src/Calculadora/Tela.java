@@ -507,7 +507,11 @@ public class Tela extends javax.swing.JFrame {
     private void btnQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuadradoActionPerformed
         quadrado = Double.parseDouble(txtresultado.getText());
         resultado = Math.pow(quadrado, 2);
-        txtresultado.setText(String.valueOf(resultado));
+        if(resultado%2!=0){
+            txtresultado.setText(Double.toString(resultado));
+        }else{
+            txtresultado.setText(String.format("%.0f", resultado));
+        }        
         txtConta.setText(String.format(quadrado + " ²"));
     }//GEN-LAST:event_btnQuadradoActionPerformed
 
@@ -626,35 +630,57 @@ public class Tela extends javax.swing.JFrame {
             case "somar":
                 resultado = calculo + num2;
                 calculo = 0;
-                txtresultado.setText(Double.toString(resultado));
-                num1 = resultado;
+                if(resultado%2==0){
+                    txtresultado.setText(String.format("%.0f", resultado));
+                }else{
+                    txtresultado.setText(Double.toString(resultado));
+                } 
+                num1 = Double.parseDouble(txtresultado.getText());
             break;
             
             case "subtrair":
                 resultado = calculo - num2;
                 calculo = 0;
-                txtresultado.setText(Double.toString(resultado));
-                num1 = resultado;
+                if(resultado%2==0){
+                    txtresultado.setText(String.format("%.0f", resultado));
+                }else{
+                    txtresultado.setText(Double.toString(resultado));
+                }
+                num1 = Double.parseDouble(txtresultado.getText());
             break;
             
             case "multiplicar":
                 resultado = calculo * num2;
                 calculo = 0;
-                txtresultado.setText(Double.toString(resultado));
-                num1 = resultado;
+                if(resultado%2==0){
+                    txtresultado.setText(String.format("%.0f", resultado));
+                }else{
+                    txtresultado.setText(Double.toString(resultado));
+                }
+                num1 = Double.parseDouble(txtresultado.getText());
             break;
             
             case "dividir":
-                resultado = calculo / num2;
-                if(0!=num2){
-                    txtresultado.setText(Double.toString(resultado));
-                    
-                }else{
-                    txtresultado.setText("Zero não é divisível!");
-                    txtConta.setText("Não é possivel dividir por zero!");
-                }
+                resultado = calculo / num2;                
                 calculo = 0;
-                num1 = resultado;
+                if(resultado%2==0){
+                    if(0!=num2){
+                        txtresultado.setText(String.format("%.0f", resultado));
+                    
+                    }else{
+                        txtresultado.setText("Zero não é divisível!");
+                        txtConta.setText("Não é possivel dividir por zero!");
+                    }
+                }else{
+                    if(0!=num2){
+                        txtresultado.setText(Double.toString(resultado));
+                    
+                    }else{
+                        txtresultado.setText("Zero não é divisível!");
+                        txtConta.setText("Não é possivel dividir por zero!");
+                    }
+                }
+                num1 = Double.parseDouble(txtresultado.getText());
             break;
         }
         
