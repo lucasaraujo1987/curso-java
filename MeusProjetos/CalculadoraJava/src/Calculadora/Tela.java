@@ -507,12 +507,12 @@ public class Tela extends javax.swing.JFrame {
     private void btnQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuadradoActionPerformed
         quadrado = Double.parseDouble(txtresultado.getText());
         resultado = Math.pow(quadrado, 2);
-        if(resultado%2!=0){
-            txtresultado.setText(Double.toString(resultado));
-        }else{
+        if(resultado%2==0){
             txtresultado.setText(String.format("%.0f", resultado));
+        }else{
+            txtresultado.setText(Double.toString(resultado));
         }        
-        txtConta.setText(String.format(quadrado + " ²"));
+        txtConta.setText(String.format(quadrado + "²"));
     }//GEN-LAST:event_btnQuadradoActionPerformed
 
     private void btnPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentagemActionPerformed
