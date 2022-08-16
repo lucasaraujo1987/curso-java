@@ -699,7 +699,7 @@ public class Tela extends javax.swing.JFrame {
         cubo = Double.parseDouble(txtresultado.getText());
         resultado = Math.pow(cubo, 3);
         txtresultado.setText(String.valueOf(resultado));
-        txtConta.setText(String.format(cubo + " ³"));
+        txtConta.setText(String.format(cubo + "³"));
     }//GEN-LAST:event_btnCuboActionPerformed
 
     private void btn00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn00ActionPerformed
