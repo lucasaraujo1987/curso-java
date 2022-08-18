@@ -13,10 +13,8 @@ import java.time.LocalDate;
  */
 public class Tela extends javax.swing.JFrame {    
     
-    double resultado, num1, num2, zerarV, raiz, porcento, calculo, quadrado, cubo,
-            dividir;
+    double resultado, num1, num2, zerarV, raiz, porcento, calculo, quadrado, cubo;
     String operacao;
-    int c;
     /**
      * Creates new form Tela
      */
