@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 public class Tela extends javax.swing.JFrame {    
     
-    double resultado, num1, num2, num3, raiz, porcento, calculo, quadrado, cubo,
+    double resultado, num1, num2, zerarV, raiz, porcento, calculo, quadrado, cubo,
             dividir;
     String operacao;
     int c;
@@ -501,17 +501,13 @@ public class Tela extends javax.swing.JFrame {
         raiz = Double.parseDouble(txtresultado.getText());
         resultado = Math.sqrt(raiz);
         txtresultado.setText(String.valueOf(resultado));
-        txtConta.setText(String.format("Raiz de ", raiz));
+        txtConta.setText(String.format("Raiz de "+ raiz));
     }//GEN-LAST:event_btnRaizQActionPerformed
 
     private void btnQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuadradoActionPerformed
         quadrado = Double.parseDouble(txtresultado.getText());
-        resultado = Math.pow(quadrado, 2);
-        if(resultado%2==0){
-            txtresultado.setText(String.format("%.0f", resultado));
-        }else{
-            txtresultado.setText(Double.toString(resultado));
-        }        
+        resultado = Math.pow(quadrado, 2);              
+        txtresultado.setText(Double.toString(resultado));
         txtConta.setText(String.format(quadrado + "²"));
     }//GEN-LAST:event_btnQuadradoActionPerformed
 
@@ -523,22 +519,22 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPorcentagemActionPerformed
 
     private void btnZerarValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZerarValorActionPerformed
-        num3 = Double.parseDouble(txtresultado.getText() + "");
+        zerarV = Double.parseDouble(txtresultado.getText() + "");
         switch (operacao){
             case "somar":
-                txtConta.setText(String.valueOf(num3) + "+");
+                txtConta.setText(String.valueOf(zerarV) + "+");
             break;
             
             case "subtrair":
-                txtConta.setText(String.valueOf(num3) + "-");
+                txtConta.setText(String.valueOf(zerarV) + "-");
             break;
             
             case "multiplicar":
-                txtConta.setText(String.valueOf(num3) + "x");
+                txtConta.setText(String.valueOf(zerarV) + "x");
             break;
             
             case "dividir":
-                txtConta.setText(String.valueOf(num3) + "/");
+                txtConta.setText(String.valueOf(zerarV) + "/");
             break;
         }        
         txtresultado.setText(null);        
