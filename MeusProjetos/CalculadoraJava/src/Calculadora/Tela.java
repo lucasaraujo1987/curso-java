@@ -500,15 +500,32 @@ public class Tela extends javax.swing.JFrame {
     private void btnRaizQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaizQActionPerformed
         raiz = Double.parseDouble(txtresultado.getText());
         resultado = Math.sqrt(raiz);
-        txtresultado.setText(String.valueOf(resultado));
-        txtConta.setText(String.format("Raiz de "+ raiz));
+        if(resultado==(int)resultado){
+            txtresultado.setText(String.format("%.0f", resultado));
+        }else{
+            txtresultado.setText(Double.toString(resultado));
+        }
+        if(raiz==(int)raiz){
+            txtConta.setText(String.format("Raiz de %.0f", raiz));
+        }else{
+            txtConta.setText(String.format("Raiz de "+ raiz));
+        }
     }//GEN-LAST:event_btnRaizQActionPerformed
 
     private void btnQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuadradoActionPerformed
         quadrado = Double.parseDouble(txtresultado.getText());
-        resultado = Math.pow(quadrado, 2);                
-        txtresultado.setText(Double.toString(resultado));
-        txtConta.setText(String.format(quadrado + "²"));
+        resultado = Math.pow(quadrado, 2);
+        if(resultado==(int)resultado){
+            txtresultado.setText(String.format("%.0f", resultado));
+        }else{
+            txtresultado.setText(Double.toString(resultado));
+        }
+        if(quadrado==(int)quadrado){
+            txtConta.setText(String.format("%.0f",quadrado));
+            txtConta.setText(txtConta.getText() + "²");
+        }else{
+            txtConta.setText(String.format(quadrado + "²"));
+        }
     }//GEN-LAST:event_btnQuadradoActionPerformed
 
     private void btnPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentagemActionPerformed
@@ -694,8 +711,17 @@ public class Tela extends javax.swing.JFrame {
     private void btnCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuboActionPerformed
         cubo = Double.parseDouble(txtresultado.getText());
         resultado = Math.pow(cubo, 3);
-        txtresultado.setText(String.valueOf(resultado));
-        txtConta.setText(String.format(cubo + "³"));
+        if(resultado==(int)resultado){
+            txtresultado.setText(String.format("%.0f", resultado));
+        }else{
+            txtresultado.setText(Double.toString(resultado));
+        }
+        if(cubo==(int)cubo){
+            txtConta.setText(String.format("%.0f",cubo));
+            txtConta.setText(txtConta.getText() + "³");
+        }else{
+            txtConta.setText(String.format(cubo + "³"));
+        }
     }//GEN-LAST:event_btnCuboActionPerformed
 
     private void btn00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn00ActionPerformed
