@@ -531,7 +531,11 @@ public class Tela extends javax.swing.JFrame {
     private void btnPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentagemActionPerformed
         num2 = Double.parseDouble(txtresultado.getText());
         porcento = (num1/100)*num2;        
-        txtresultado.setText(Double.toString(porcento));
+        if(porcento==(int)porcento){
+            txtresultado.setText(String.format("%.0f", porcento));
+        }else{
+            txtresultado.setText(Double.toString(porcento));
+        }
         txtConta.setText(txtConta.getText() + "%");
     }//GEN-LAST:event_btnPorcentagemActionPerformed
 
@@ -643,7 +647,7 @@ public class Tela extends javax.swing.JFrame {
             case "somar":
                 resultado = calculo + num2;
                 calculo = 0;
-                if(resultado%2==0){
+                if(resultado==(int)resultado){
                     txtresultado.setText(String.format("%.0f", resultado));
                 }else{
                     txtresultado.setText(Double.toString(resultado));
@@ -654,7 +658,7 @@ public class Tela extends javax.swing.JFrame {
             case "subtrair":
                 resultado = calculo - num2;
                 calculo = 0;
-                if(resultado%2==0){
+                if(resultado==(int)resultado){
                     txtresultado.setText(String.format("%.0f", resultado));
                 }else{
                     txtresultado.setText(Double.toString(resultado));
@@ -665,7 +669,7 @@ public class Tela extends javax.swing.JFrame {
             case "multiplicar":
                 resultado = calculo * num2;
                 calculo = 0;
-                if(resultado%2==0){
+                if(resultado==(int)resultado){
                     txtresultado.setText(String.format("%.0f", resultado));
                 }else{
                     txtresultado.setText(Double.toString(resultado));
@@ -676,7 +680,7 @@ public class Tela extends javax.swing.JFrame {
             case "dividir":
                 resultado = calculo / num2;                
                 calculo = 0;
-                if(resultado%2==0){
+                if(resultado==(int)resultado){
                     if(0!=num2){
                         txtresultado.setText(String.format("%.0f", resultado));
                     
