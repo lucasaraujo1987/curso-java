@@ -506,7 +506,7 @@ public class Tela extends javax.swing.JFrame {
 
     private void btnQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuadradoActionPerformed
         quadrado = Double.parseDouble(txtresultado.getText());
-        resultado = Math.pow(quadrado, 2);              
+        resultado = Math.pow(quadrado, 2);                
         txtresultado.setText(Double.toString(resultado));
         txtConta.setText(String.format(quadrado + "²"));
     }//GEN-LAST:event_btnQuadradoActionPerformed
