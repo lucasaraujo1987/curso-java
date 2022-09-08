@@ -4,7 +4,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -17,6 +19,9 @@ public class TelaJTable extends javax.swing.JFrame {
      */
     public TelaJTable() {
         initComponents();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jtProdutos.getModel();
+        jtProdutos.setRowSorter(new TableRowSorter(modelo));
     }
 
     /**
@@ -36,6 +41,8 @@ public class TelaJTable extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         txtPreco = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtProdutos = new javax.swing.JTable();
@@ -55,6 +62,20 @@ public class TelaJTable extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Excluir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Atualizar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -62,7 +83,12 @@ public class TelaJTable extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,7 +123,10 @@ public class TelaJTable extends javax.swing.JFrame {
                     .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
@@ -108,7 +137,25 @@ public class TelaJTable extends javax.swing.JFrame {
             new String [] {
                 "DESCRIÇÃO", "QUANTIDADE", "PREÇO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtProdutosMouseClicked(evt);
+            }
+        });
+        jtProdutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtProdutosKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtProdutos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -151,8 +198,48 @@ public class TelaJTable extends javax.swing.JFrame {
         DefaultTableModel dtmprodutos = (DefaultTableModel) jtProdutos.getModel();
         Object[] dados = {txtDesc.getText(),txtQtd.getText(),txtPreco.getText()};
         dtmprodutos.addRow(dados);
-        
+        txtDesc.setText("");
+        txtQtd.setText("");
+        txtPreco.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //
+        if(jtProdutos.getSelectedRow() != -1){
+        DefaultTableModel dtmprodutos = (DefaultTableModel) jtProdutos.getModel();
+        dtmprodutos.removeRow(jtProdutos.getSelectedRow());            
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
+        }
+        txtDesc.setText("");
+        txtQtd.setText("");
+        txtPreco.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jtProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProdutosMouseClicked
+        if(jtProdutos.getSelectedRow() != -1){
+            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0).toString());
+            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
+            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+        }
+    }//GEN-LAST:event_jtProdutosMouseClicked
+
+    private void jtProdutosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtProdutosKeyReleased
+        if(jtProdutos.getSelectedRow() != -1){
+            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0).toString());
+            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
+            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+        }
+        
+    }//GEN-LAST:event_jtProdutosKeyReleased
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(jtProdutos.getSelectedRow() != -1){
+            jtProdutos.setValueAt(txtDesc.getText(), jtProdutos.getSelectedRow(), 0);
+            jtProdutos.setValueAt(txtQtd.getText(), jtProdutos.getSelectedRow(), 1);
+            jtProdutos.setValueAt(txtPreco.getText(), jtProdutos.getSelectedRow(), 2);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,7 +277,9 @@ public class TelaJTable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
