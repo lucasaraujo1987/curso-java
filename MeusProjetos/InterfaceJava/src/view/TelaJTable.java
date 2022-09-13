@@ -239,6 +239,9 @@ public class TelaJTable extends javax.swing.JFrame {
             jtProdutos.setValueAt(txtQtd.getText(), jtProdutos.getSelectedRow(), 1);
             jtProdutos.setValueAt(txtPreco.getText(), jtProdutos.getSelectedRow(), 2);
         }
+        txtDesc.setText("");
+        txtQtd.setText("");
+        txtPreco.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
