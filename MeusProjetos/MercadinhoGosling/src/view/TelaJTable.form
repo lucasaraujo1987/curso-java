@@ -116,7 +116,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="DESCR&#xc7;&#xc3;O"/>
+            <Property name="text" type="java.lang.String" value="DESCRI&#xc7;&#xc3;O"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDesc">

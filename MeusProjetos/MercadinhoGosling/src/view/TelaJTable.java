@@ -7,6 +7,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.dao.ProdutoDAO;
+import modelBin.Produto;
 
 /**
  *
@@ -49,7 +51,7 @@ public class TelaJTable extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("DESCRÇÃO");
+        jLabel1.setText("DESCRIÇÃO");
 
         jLabel2.setText("QTD");
 
@@ -194,13 +196,19 @@ public class TelaJTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        DefaultTableModel dtmprodutos = (DefaultTableModel) jtProdutos.getModel();
-        Object[] dados = {txtDesc.getText(),txtQtd.getText(),txtPreco.getText()};
-        dtmprodutos.addRow(dados);
-        txtDesc.setText("");
-        txtQtd.setText("");
-        txtPreco.setText("");
+        Produto p = new Produto();
+        ProdutoDAO dao = new ProdutoDAO();
+        p.setId(WIDTH);
+        p.setDescricao(txtDesc.getText());
+        p.setQtd(Integer.parseInt(txtQtd.getText()));
+        p.setPreco(Double.parseDouble(txtPreco.getText()));
+        dao.create(p);
+//        DefaultTableModel dtmprodutos = (DefaultTableModel) jtProdutos.getModel();
+//        Object[] dados = {txtDesc.getText(),txtQtd.getText(),txtPreco.getText()};
+//        dtmprodutos.addRow(dados);
+//        txtDesc.setText("");
+//        txtQtd.setText("");
+//        txtPreco.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
