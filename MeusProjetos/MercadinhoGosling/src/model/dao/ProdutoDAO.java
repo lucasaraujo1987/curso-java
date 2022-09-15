@@ -85,4 +85,20 @@ public class ProdutoDAO {
             ConnectionFactory.closeConnection(con, stmt);
         }
     }
+    public void delete(Produto p){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("DELETE FROM produto WHERE id = ?");
+            stmt.setInt(1, p.getId());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluir!"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }

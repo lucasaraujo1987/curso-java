@@ -231,14 +231,20 @@ public class TelaJTable extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //
         if(jtProdutos.getSelectedRow() != -1){
-        DefaultTableModel dtmprodutos = (DefaultTableModel) jtProdutos.getModel();
-        dtmprodutos.removeRow(jtProdutos.getSelectedRow());            
+            Produto p = new Produto();
+            ProdutoDAO dao = new ProdutoDAO();
+            p.setId((int) jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0));
+            dao.delete(p);
+
+            txtDesc.setText("");
+            txtQtd.setText("");
+            txtPreco.setText("");
+
+            readJTable();
+        
         }else{
             JOptionPane.showMessageDialog(null, "Selecione um produto para excluir");
         }
-        txtDesc.setText("");
-        txtQtd.setText("");
-        txtPreco.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jtProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProdutosMouseClicked
