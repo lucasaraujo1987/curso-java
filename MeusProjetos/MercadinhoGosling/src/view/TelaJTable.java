@@ -24,6 +24,23 @@ public class TelaJTable extends javax.swing.JFrame {
         
         DefaultTableModel modelo = (DefaultTableModel) jtProdutos.getModel();
         jtProdutos.setRowSorter(new TableRowSorter(modelo));
+        
+        readJTable();
+    }
+    
+    public void readJTable(){
+        DefaultTableModel modelo = (DefaultTableModel) jtProdutos.getModel();
+        modelo.setNumRows(0);
+        ProdutoDAO pdao = new ProdutoDAO();
+        
+        for(Produto p: pdao.read()){
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getDescricao(),
+                p.getQtd(),
+                p.getPreco()
+            });
+        }
     }
 
     /**
@@ -137,11 +154,11 @@ public class TelaJTable extends javax.swing.JFrame {
 
             },
             new String [] {
-                "DESCRIÇÃO", "QUANTIDADE", "PREÇO"
+                "ID", "DESCRIÇÃO", "QUANTIDADE", "PREÇO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -198,17 +215,17 @@ public class TelaJTable extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Produto p = new Produto();
         ProdutoDAO dao = new ProdutoDAO();
-        p.setId(WIDTH);
         p.setDescricao(txtDesc.getText());
         p.setQtd(Integer.parseInt(txtQtd.getText()));
         p.setPreco(Double.parseDouble(txtPreco.getText()));
+        p.setId(WIDTH);
         dao.create(p);
-//        DefaultTableModel dtmprodutos = (DefaultTableModel) jtProdutos.getModel();
-//        Object[] dados = {txtDesc.getText(),txtQtd.getText(),txtPreco.getText()};
-//        dtmprodutos.addRow(dados);
-//        txtDesc.setText("");
-//        txtQtd.setText("");
-//        txtPreco.setText("");
+        
+        txtDesc.setText("");
+        txtQtd.setText("");
+        txtPreco.setText("");
+        
+        readJTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -226,30 +243,38 @@ public class TelaJTable extends javax.swing.JFrame {
 
     private void jtProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProdutosMouseClicked
         if(jtProdutos.getSelectedRow() != -1){
-            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0).toString());
-            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
-            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
+            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 3).toString());
         }
     }//GEN-LAST:event_jtProdutosMouseClicked
 
     private void jtProdutosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtProdutosKeyReleased
         if(jtProdutos.getSelectedRow() != -1){
-            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0).toString());
-            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
-            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
+            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 3).toString());
         }
         
     }//GEN-LAST:event_jtProdutosKeyReleased
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(jtProdutos.getSelectedRow() != -1){
-            jtProdutos.setValueAt(txtDesc.getText(), jtProdutos.getSelectedRow(), 0);
-            jtProdutos.setValueAt(txtQtd.getText(), jtProdutos.getSelectedRow(), 1);
-            jtProdutos.setValueAt(txtPreco.getText(), jtProdutos.getSelectedRow(), 2);
+            Produto p = new Produto();
+            ProdutoDAO dao = new ProdutoDAO();
+            p.setDescricao(txtDesc.getText());
+            p.setQtd(Integer.parseInt(txtQtd.getText()));
+            p.setPreco(Double.parseDouble(txtPreco.getText()));
+            p.setId((int) jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0));
+            dao.update(p);
+
+            txtDesc.setText("");
+            txtQtd.setText("");
+            txtPreco.setText("");
+
+            readJTable();
         }
-        txtDesc.setText("");
-        txtQtd.setText("");
-        txtPreco.setText("");
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
